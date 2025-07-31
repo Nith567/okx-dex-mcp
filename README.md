@@ -57,3 +57,97 @@ OKX_API_KEY=your_okx_api_key
 OKX_SECRET_KEY=your_okx_secret_key
 OKX_PASSPHRASE=your_okx_passphrase
 ```
+
+### 5. Claude Desktop Configuration
+
+Add this configuration to your Claude Desktop config file (`claude_desktop_config.json`):
+
+ also the path in the args write like 
+ 
+```json
+{
+  "mcpServers": {
+    "okx": {
+      "command": "path_of_bun",
+      "args": [
+        "run",
+        "your_path/your_project_folder/build/index.js"
+      ],
+      "env": {
+        "OKX_API_KEY": "xxxxx",
+        "OKX_SECRET_KEY": "xxxxx",
+        "OKX_PASSPHRASE": "xxxxx",
+        "PRIVATE_KEY": "xxxxx"
+      }
+    }
+  }
+}
+```
+
+**Note**: 
+- Replace `path_of_bun` with your actual bun path (find it using `which bun` in terminal)
+- Replace `your_path/your_project_folder` with the actual path to your project folder
+
+### 6. Supported Networks
+- **Ethereum**: Chain ID 1
+- **Base**: Chain ID 8453  
+- **Optimism**: Chain ID 10
+- **xLayer**: Chain ID 196
+
+### 7. Example Usage
+
+```typescript
+// Example: Swap 0.4 USDC to USDT on Optimism
+const result = await executeTokenSwap({
+  network: 'optimism',
+  amount: '0.4',
+  fromTokenSymbol: 'USDC', 
+  toTokenSymbol: 'USDT'
+});
+
+// Returns:
+{
+  success: true,
+  hash: "0x...",
+  meeScanLink: "https://...",
+  receipt: {...}
+}
+```
+
+### 8. Key Technical Details
+
+#### OKX API Integration:
+- Uses shared library (`src/lib/okx.ts`) for HMAC-SHA256 authentication
+- Supports both GET and POST requests with proper signing
+- Environment variable configuration for credentials
+
+#### Transaction Decoding:
+- Approval transactions decoded using standard ERC20 ABI
+- Swap transactions decoded using DEX router ABI (`src/abi/dexRouter.json`)
+- Extracts function names and arguments for MEE execution
+
+#### Biconomy MEE:
+- Multichain nexus account supports Ethereum, Base, Optimism
+- Composable transactions for approve + swap operations
+- Fusion quotes for optimized execution
+- Cross-chain transaction management
+
+### 9. Error Handling
+- Network validation errors
+- Token support validation  
+- OKX API error responses
+- Transaction execution failures
+- MEE integration errors
+****
+### 10. Security Features
+- Private key environment variable management
+- HMAC-SHA256 signed API requests
+- Transaction validation before execution
+- Slippage protection (5% default)
+
+## Architecture Benefits
+- **Modular Design**: Clean separation between API, tools, and services
+- **Reusable Components**: Shared OKX library eliminates code duplication
+- **Type Safety**: Full TypeScript implementation with proper interfaces
+- **Error Resilience**: Comprehensive error handling throughout the flow
+- **Extensible**: Easy to add support for additional networks and DEX protocols
