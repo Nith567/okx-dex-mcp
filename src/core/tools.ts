@@ -13,6 +13,37 @@ import { getPrivateKeyAsHex } from "./config.js";
  */
 export function registerEVMTools(server: McpServer) {
 
+  // Morpho deposit service: swap to WETH if needed, then deposit into Morpho
+  server.tool(
+    "deposit_morpho",
+    "Swap a token to WETH (if needed) and deposit into Morpho pool on Base. Params: amount,fromTokenSymbol userNetwork (optional)",
+    {
+      amount: z.string().describe("Amount to deposit )"),
+      fromTokenSymbol: z.string().describe("Symbol of the token to swap from (e.g. 'USDC', 'WETH') by default its WETH"),
+      userNetwork: z.string().optional().describe("Network name (default: 'base')")
+    },
+    async ({ amount, fromTokenSymbol, userNetwork }) => {
+      try {
+        const { swapAndDepositMorpho } = await import('./services/deposit-morpho.js');
+        const result = await swapAndDepositMorpho({ amount, fromTokenSymbol, userNetwork });
+        return {
+          content: [{
+            type: "text",
+            text: JSON.stringify(result, null, 2)
+          }]
+        };
+      } catch (error) {
+        return {
+          content: [{
+            type: "text",
+            text: `Error in swap_and_deposit_morpho: ${error instanceof Error ? error.message : String(error)}`
+          }],
+          isError: true
+        };
+      }
+    }
+  );
+
   // OKX DEX API - Get all supported chains (raw from OKX)
   server.tool(
     "get_supported_chains_by_okx",

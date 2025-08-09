@@ -9,7 +9,7 @@ import {
 
 //https://base-testnet.g.alchemy.com/v2/QyxMOKTYrNkmofq71rof8WEO1kw9VuI4
 export const DEFAULT_NETWORK = 'base';
-export const DEFAULT_RPC_URL = 'https://base-mainnet.g.alchemy.com/v2/QyxMOKTYrNkmofq71rof8WEO1kw9VuI4';
+export const DEFAULT_RPC_URL = 'https://base-mainnet.g.alchemy.com/v2/Gm0fvJZenazNkP5572WIwLIhBJt2BgTs';
 export const DEFAULT_CHAIN_ID = 8453;
 
 export const chainMap: Record<number, Chain> = {
@@ -32,7 +32,7 @@ export const rpcUrlMap: Record<number, string> = {
   1: 'https://eth-mainnet.g.alchemy.com/v2/QyxMOKTYrNkmofq71rof8WEO1kw9VuI4',
   10: 'https://opt-mainnet.g.alchemy.com/v2/QyxMOKTYrNkmofq71rof8WEO1kw9VuI4',
   196: 'https://rpc.xlayer.tech',
-  8453: 'https://base-mainnet.g.alchemy.com/v2/QyxMOKTYrNkmofq71rof8WEO1kw9VuI4',
+  8453: 'https://base-mainnet.g.alchemy.com/v2/Gm0fvJZenazNkP5572WIwLIhBJt2BgTs',
 };
 
 /**
