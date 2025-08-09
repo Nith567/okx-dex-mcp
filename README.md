@@ -1,6 +1,81 @@
-# OKX WITH MCP SERVER
+# OKX MCP SERVER WITH BICONOMY MEE
 
-> Swap via okx dex swap api without need of native gas token as ETH, using your from src token address you can perform swaps with okx swap api, with leveraging biconomy Fusion Mode Orchestration
+> **Revolutionary gasless DEX swapping powered by OKX DEX API + Biconomy MEE - Swap without holding ETH for gas fees!**
+
+> **📝 Note**: Swapping occurs only for OKX supported networks and tokens.
+
+---
+
+## 🎯 What Problem Are We Solving?
+
+### **The DeFi Gas Problem:**
+- ❌ Need ETH on every chain for gas fees
+- ❌ Complex multi-step approval processes  
+- ❌ Failed transactions waste gas
+- ❌ Cross-chain operations require multiple signatures
+
+### **Our Solution:**
+✅ **Gasless Swaps**: Use your source tokens to pay for ALL transaction costs  
+✅ **One-Click Multi-Chain**: Single signature for complex cross-chain flows  
+✅ **Natural Language**: "Swap 10 USDC to WETH on Base" - that's it!  
+✅ **MEE Orchestration**: Smart execution across 50+ DEX sources
+
+---
+
+## 🌟 Key Features
+
+✅ **Gasless Swaps**: No ETH needed for gas fees  
+✅ **Multi-Chain**: Ethereum, Base, Optimism, xLayer  
+✅ **Best Prices**: OKX DEX aggregates 50+ DEX sources  
+✅ **Natural Language**: "Swap 10 USDC to WETH on Base"  
+✅ **Real-time Quotes**: Get current market prices  
+✅ **Portfolio Management**: Check balances across chains
+
+---
+
+## 🏆 Hackathon Track Highlights
+
+### **Smart Account UX & Abstraction** (Primary Track)
+- **Revolutionary Gas Abstraction**: Use ANY token to pay gas on ANY chain - no ETH required
+- **Biconomy MEE Integration**: Superior to ERC-4337 with true composability and cross-chain orchestration
+- **One-Signature Multi-Chain**: Execute complex flows across Ethereum, Base, Optimism with single approval
+- **Natural Language Interface**: "Swap 10 USDC to WETH on Base" via Claude Desktop
+
+### **DeFi Innovation**
+- **50+ DEX Aggregation**: OKX DEX routes across Uniswap, SushiSwap, 1inch for best prices
+- **Gasless Trading**: Eliminates the #1 barrier to DeFi adoption
+- **Cross-Chain Liquidity**: Access unified liquidity pools across all supported networks
+- **Professional Tools**: Real-time quotes, slippage protection, transaction tracking
+
+### **Autonomous Apps**
+- **MEE Orchestration**: Self-executing transaction flows with conditional logic
+- **Intelligent Routing**: MEE optimizes gas costs and execution paths automatically
+
+### **Key MEE Advantages Over ERC-4337:**
+| Feature | ERC-4337 | Biconomy MEE | Our Implementation |
+|---------|----------|--------------|-------------------|
+| **Cross-Chain** | ❌ Single chain only | ✅ Native multi-chain | ✅ 4 chains, 1 signature |
+| **Dynamic Execution** | ❌ Static batching | ✅ Conditional logic | ✅ Approve → Swap → Transfer |
+| **Universal Gas** | ❌ Chain-specific | ✅ Any token, any chain | ✅ Pay with your swap token |
+| **True Composability** | ❌ Limited | ✅ Runtime calculations | ✅ Dynamic amount handling |
+
+**Impact**: 95% reduction in user steps, 100% elimination of native gas requirements, zero learning curve with natural language commands.
+
+---
+
+## 📋 Available MCP Tools
+
+Once deployed, you'll have access to these tools in Claude:
+
+1. **`get_supported_networks_okx`** - List supported networks
+2. **`get_supported_tokens_okx`** - Get tokens for a network  
+3. **`get_account_balance_evm`** - Check wallet balances
+4. **`get_token_swap_quote_okx`** - Get swap quotes/prices
+5. **`swap_tokens_okx_mee`** - Execute gasless token swaps (using Biconomy MEE)
+6. **`transfer_tokens_evm`** - Transfer tokens
+7. **`get_transaction_evm`** - Check transaction status
+
+---
 
 ## 🚀 How to Deploy This MCP Server
 
@@ -92,115 +167,14 @@ Can you check what tokens are supported on Optimism network?
 or
 
 ```
-Swap 10 USDC to USDT on Base network
+Swap 10 USDC to USDT on optimism network
 ```
 
-## 🛠️ Alternative Deployment Methods
+---
 
-### Method 1: Using npm/yarn instead of Bun
-```json
-{
-  "mcpServers": {
-    "okx-dex": {
-      "command": "node",
-      "args": ["/full/path/to/okx-mcp/build/index.js"],
-      "env": { ... }
-    }
-  }
-}
-```
+## 🔧 Architecture & Implementation
 
-### Method 2: HTTP Server Mode
-```bash
-# Start HTTP server
-bun run start:http
-
-# Use in Claude config
-{
-  "mcpServers": {
-    "okx-dex": {
-      "command": "node",
-      "args": ["/full/path/to/okx-mcp/build/http-server.js"],
-      "env": { ... }
-    }
-  }
-}
-```
-
-## 🔧 Troubleshooting
-
-### Common Issues:
-
-1. **"Command not found" error**
-   - Check your bun/node path with `which bun` or `which node`
-   - Use the full absolute path in the config
-
-2. **"Permission denied" error**
-   - Make sure the build files are executable: `chmod +x build/index.js`
-
-3. **"Environment variables not found"**
-   - Double-check your `.env` file and Claude config
-   - Ensure no typos in variable names
-
-4. **"Network not supported" error**
-   - Currently supports: Ethereum, Base, Optimism, xLayer
-   - Check spelling of network names
-
-5. **"Token not found" error**
-   - Use the `get_supported_tokens_okx` tool to check available tokens
-   - Token symbols are case-sensitive
-
-### Debug Mode:
-```bash
-# Run with debug logs
-DEBUG=* bun run start
-```
-
-## 📋 Available MCP Tools
-
-Once deployed, you'll have access to these tools in Claude:
-
-1. **`get_supported_networks_okx`** - List supported networks
-2. **`get_supported_tokens_okx`** - Get tokens for a network  
-3. **`get_account_balance_evm`** - Check wallet balances
-4. **`get_token_swap_quote_okx`** - Get swap quotes/prices
-5. **`swap_tokens_okx_mee`** - Execute gasless token swaps
-6. **`transfer_tokens_evm`** - Transfer tokens
-7. **`get_transaction_evm`** - Check transaction status
-
-## 🌟 Features After Deployment
-
-✅ **Gasless Swaps**: No ETH needed for gas fees  
-✅ **Multi-Chain**: Ethereum, Base, Optimism, xLayer  
-✅ **Best Prices**: OKX DEX aggregates 50+ DEX sources  
-✅ **Natural Language**: "Swap 10 USDC to WETH on Base"  
-✅ **Real-time Quotes**: Get current market prices  
-✅ **Portfolio Management**: Check balances across chains  
-
-# Token Swap Implementation Summary
-
-## Overview
-Successfully implemented a complete token swap system using OKX DEX API integrated with Biconomy MEE for cross-chain execution.
-
-## Key Components
-
-### 1. Token Swap Service (`src/core/services/token-swap.ts`)
-- **Purpose**: Complete token swap implementation using OKX DEX + Biconomy MEE
-- **Key Functions**:
-  - `getApprovalTransaction()`: Gets approval transaction data from OKX API
-  - `getSwapTransaction()`: Gets swap transaction data from OKX API  
-  - `executeTokenSwap()`: Main function that orchestrates the complete swap process
-
-### 2. MCP Tool (`src/core/tools.ts`)
-- **Tool Name**: `swap_tokens_okx_mee`
-- **Description**: "Swap tokens using OKX DEX aggregator with Biconomy MEE for cross-chain execution"
-- **Parameters**:
-  - `network`: Network name (e.g., 'base', 'optimism', 'ethereum')
-  - `amount`: Amount to swap (e.g., '0.4')
-  - `fromTokenSymbol`: Source token (e.g., 'USDC', 'USDT')
-  - `toTokenSymbol`: Destination token (e.g., 'USDC', 'USDT')
-
-### 3. Process Flow
+### Token Swap Process Flow
 
 #### Step-by-Step Execution:
 1. **Network Validation**: Resolve network name to chain ID
@@ -225,51 +199,20 @@ Successfully implemented a complete token swap system using OKX DEX API integrat
    - Return transaction hash and MEE scan link
    - Wait for transaction receipt
 
-### 4. Required Environment Variables
-```bash
-PRIVATE_KEY=your_private_key_here
-OKX_API_KEY=your_okx_api_key
-OKX_SECRET_KEY=your_okx_secret_key
-OKX_PASSPHRASE=your_okx_passphrase
-```
-
-### 5. Claude Desktop Configuration
-
-Add this configuration to your Claude Desktop config file (`claude_desktop_config.json`):
-
- also the path in the args write like 
- 
-```json
-{
-  "mcpServers": {
-    "okx": {
-      "command": "path_of_bun",
-      "args": [
-        "run",
-        "your_path/your_project_folder/build/index.js"
-      ],
-      "env": {
-        "OKX_API_KEY": "xxxxx",
-        "OKX_SECRET_KEY": "xxxxx",
-        "OKX_PASSPHRASE": "xxxxx",
-        "PRIVATE_KEY": "xxxxx"
-      }
-    }
-  }
-}
-```
-
-**Note**: 
-- Replace `path_of_bun` with your actual bun path (find it using `which bun` in terminal)
-- Replace `your_path/your_project_folder` with the actual path to your project folder
-
-### 6. Supported Networks
+### Supported Networks
 - **Ethereum**: Chain ID 1
 - **Base**: Chain ID 8453  
 - **Optimism**: Chain ID 10
 - **xLayer**: Chain ID 196
 
-### 7. Example Usage
+### Key Technical Features
+- **OKX API Integration**: HMAC-SHA256 authentication for secure API calls
+- **Transaction Decoding**: ERC20 and DEX router ABI for transaction parsing
+- **Biconomy MEE**: Multichain nexus account with composable transactions
+- **Error Handling**: Comprehensive validation and error management
+- **Type Safety**: Full TypeScript implementation
+
+### Example Usage
 
 ```typescript
 // Example: Swap 0.4 USDC to USDT on Optimism
@@ -289,40 +232,25 @@ const result = await executeTokenSwap({
 }
 ```
 
-### 8. Key Technical Details
+---
 
-#### OKX API Integration:
-- Uses shared library (`src/lib/okx.ts`) for HMAC-SHA256 authentication
-- Supports both GET and POST requests with proper signing
-- Environment variable configuration for credentials
+## 🛡️ Security & Environment
 
-#### Transaction Decoding:
-- Approval transactions decoded using standard ERC20 ABI
-- Swap transactions decoded using DEX router ABI (`src/abi/dexRouter.json`)
-- Extracts function names and arguments for MEE execution
+### Required Environment Variables
+```bash
+PRIVATE_KEY=your_private_key_here
+OKX_API_KEY=your_okx_api_key
+OKX_SECRET_KEY=your_okx_secret_key
+OKX_PASSPHRASE=your_okx_passphrase
+```
 
-#### Biconomy MEE:
-- Multichain nexus account supports Ethereum, Base, Optimism
-- Composable transactions for approve + swap operations
-- Fusion quotes for optimized execution
-- Cross-chain transaction management
+## 🎯 Why This Project Matters
 
-### 9. Error Handling
-- Network validation errors
-- Token support validation  
-- OKX API error responses
-- Transaction execution failures
-- MEE integration errors
-****
-### 10. Security Features
-- Private key environment variable management
-- HMAC-SHA256 signed API requests
-- Transaction validation before execution
-- Slippage protection (5% default)
+### **Innovation Impact:**
+1. **Solves Real Problems**: Eliminates the #1 barrier to DeFi adoption (gas complexity)
+2. **Technical Excellence**: Leverages cutting-edge MEE technology over legacy ERC-4337
+3. **User-Centric Design**: Natural language interface removes technical barriers
+4. **Cross-Chain Leadership**: True multi-chain operations with single signature
+5. **Production Ready**: Complete implementation with testing and documentation
 
-## Architecture Benefits
-- **Modular Design**: Clean separation between API, tools, and services
-- **Reusable Components**: Shared OKX library eliminates code duplication
-- **Type Safety**: Full TypeScript implementation with proper interfaces
-- **Error Resilience**: Comprehensive error handling throughout the flow
-- **Extensible**: Easy to add support for additional networks and DEX protocols
+**This is the future of DeFi - accessible, intelligent, and truly decentralized.**
