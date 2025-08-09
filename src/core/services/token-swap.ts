@@ -141,6 +141,8 @@ export async function executeTokenSwap(params: SwapParams): Promise<{
   meeScanLink?: string;
   receipt?: any;
   error?: string;
+  outputAmount?: string;
+  minReceiveAmount?: string;
 }> {
   try {
     const { network, amount, fromTokenSymbol, toTokenSymbol } = params;
@@ -193,8 +195,7 @@ export async function executeTokenSwap(params: SwapParams): Promise<{
       signer: eoa
     });
     
-    // For now, let's use the user wallet address for the OKX API
-    // The MEE will handle the actual execution context
+
     const meeAccountAddress = userWalletAddress;
 
     // 6. Get approval transaction data
@@ -299,7 +300,9 @@ export async function executeTokenSwap(params: SwapParams): Promise<{
       success: true,
       hash,
       meeScanLink,
-      receipt: serializableReceipt
+      receipt: serializableReceipt,
+      outputAmount: swapData.toTokenAmount, // Actual output amount from swap
+      minReceiveAmount: swapData.minReceiveAmount // Minimum guaranteed output
     };
 
   } catch (error) {
