@@ -212,6 +212,39 @@ Swap 10 USDC to USDT on optimism network
 - **Error Handling**: Comprehensive validation and error management
 - **Type Safety**: Full TypeScript implementation
 
+
+---
+
+## 💸 Referral & Fee Revenue Support
+
+This MCP server supports referral-based revenue generation by allowing you to specify a referrer wallet address and a small percentage fee on each swap. This is similar to how Phantom and other wallets have generated significant revenue by taking a small cut of each transaction.
+
+**How it works:**
+
+- When building the swap request to OKX DEX Aggregator, you can include the following parameters:
+
+```js
+const params = {
+  chainIndex: chainId,
+  amount,
+  toTokenAddress,
+  fromTokenAddress,
+  slippage: SLIPPAGE,
+  userWalletAddress,
+  fromTokenReferrerWalletAddress: "0xYourReferralAddress", // Your address to receive referral fees
+  feePercent: "0.25" // Example: 0.35% fee for revenue
+};
+```
+
+- The `fromTokenReferrerWalletAddress` receives the referral fee, and `feePercent` sets the percentage (e.g., `0.25` for 0.25%).
+- This enables you to earn a small profit on every swap routed through your MCP server.
+- Many wallets (like Phantom) have made millions in revenue using this approach.
+- We are expanding this by providing MCP as a service, so you can also benefit from referral fees.
+
+
+
+---
+
 ### Example Usage
 
 ```typescript
