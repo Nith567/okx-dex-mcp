@@ -1,3 +1,4 @@
+// ...existing code...
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import {getSupportedNetworks, getRpcUrl, DEFAULT_NETWORK} from "./chains.js";
@@ -11,6 +12,32 @@ import { getPrivateKeyAsHex } from "./config.js";
  * @param server The MCP server instance
  */
 export function registerEVMTools(server: McpServer) {
+
+  // OKX DEX API - Get all supported chains (raw from OKX)
+  server.tool(
+    "get_supported_chains_by_okx",
+    "Get all supported chains from OKX DEX aggregator (raw list, not filtered). Returns chainId, chainName, and DEX token approve address for each chain.",
+    {},
+    async () => {
+      try {
+        const data = await services.getOKXSupportedChains();
+        return {
+          content: [{
+            type: "text",
+            text: JSON.stringify(data, null, 2)
+          }]
+        };
+      } catch (error) {
+        return {
+          content: [{
+            type: "text",
+            text: `Error fetching supported chains from OKX: ${error instanceof Error ? error.message : String(error)}`
+          }],
+          isError: true
+        };
+      }
+    }
+  );
 
 
   // Get chain information
@@ -94,7 +121,7 @@ export function registerEVMTools(server: McpServer) {
   // Get supported networks
   server.tool(
     "get_supported_networks",
-    "Get a list of supported OKX evm networks",//at present we set to limited okx dex api supported chains
+    "Get a list supported chains by our OKX-MCP DAPP(mcp server)",//at present we set to limited okx dex api supported chains
     {},
     async () => {
       try {

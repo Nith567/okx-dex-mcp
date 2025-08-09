@@ -1,3 +1,4 @@
+export * from './supported-chain.js';
 // Export all services
 export * from './clients.js';
 export * from './balance.js';
