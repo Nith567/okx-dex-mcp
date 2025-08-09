@@ -33,7 +33,7 @@
 
 ---
 
-## 🏆 Hackathon Track Highlights
+## 🏆 Hackathon Tracks
 
 ### **Smart Account UX & Abstraction** (Primary Track)
 - **Revolutionary Gas Abstraction**: Use ANY token to pay gas on ANY chain - no ETH required
@@ -81,7 +81,7 @@ Once deployed, you'll have access to these tools in Claude:
 
 ### Prerequisites
 - Node.js 18+ or Bun installed
-- Claude Desktop app
+- Claude Desktop app (for mcp test)
 - OKX DEX API credentials
 - Private key for wallet operations
 
@@ -111,7 +111,7 @@ bun run build
 
 ### Step 4: Test the Server (Optional)
 ```bash
-# Test a token swap
+# Test a token swap(checkout serveral test scripts out there )
 bun run test:swap
 
 # Start server locally
@@ -227,14 +227,13 @@ const result = await executeTokenSwap({
 {
   success: true,
   hash: "0x...",
+  explorerLink: "https://..",
   meeScanLink: "https://...",
   receipt: {...}
 }
 ```
 
 ---
-
-## 🛡️ Security & Environment
 
 ### Required Environment Variables
 ```bash
@@ -251,6 +250,3 @@ OKX_PASSPHRASE=your_okx_passphrase
 2. **Technical Excellence**: Leverages cutting-edge MEE technology over legacy ERC-4337
 3. **User-Centric Design**: Natural language interface removes technical barriers
 4. **Cross-Chain Leadership**: True multi-chain operations with single signature
-5. **Production Ready**: Complete implementation with testing and documentation
-
-**This is the future of DeFi - accessible, intelligent, and truly decentralized.**
