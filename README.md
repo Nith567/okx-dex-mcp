@@ -1,4 +1,4 @@
-# OKX MCP SERVER WITH BICONOMY MEE
+# OKX MCP SERVER
 
 > **Revolutionary gasless DEX swapping powered by OKX DEX API + Biconomy MEE - Swap without holding ETH for gas fees!**
 
@@ -64,6 +64,33 @@
 ---
 
 
+
+## 🖼️ Gallery of the Project
+
+Here are some screenshots and visuals from the project in action:
+
+<p align="center">
+  <img src="./img/claude-mcp-success.png" alt="Claude MCP Success" width="600" />
+  <br><em>Claude MCP Success</em>
+</p>
+
+<p align="center">
+  <img src="./img/mcp-liquidity-tool.png" alt="MCP Liquidity Tool" width="600" />
+  <br><em>MCP Liquidity Tool</em>
+</p>
+
+<p align="center">
+  <img src="./img/mee-success-tnx.png" alt="MEE Success Transaction" width="600" />
+  <br><em>MEE Success Transaction</em>
+</p>
+
+<p align="center">
+  <img src="./img/price-okx-fetch.png" alt="Price OKX Fetch" width="600" />
+  <br><em>Price OKX Fetch</em>
+</p>
+
+
+
 ---
 
 ## 🎨 Superior User Experience
@@ -88,6 +115,7 @@
 ```
 
 ---
+
 
 
 ---
@@ -337,6 +365,8 @@ OKX_SECRET_KEY=your_okx_secret_key
 OKX_PASSPHRASE=your_okx_passphrase
 ```
 
+
+
 ## 🎯 Why This Project Matters
 
 ### **Innovation Impact:**
@@ -344,3 +374,6 @@ OKX_PASSPHRASE=your_okx_passphrase
 2. **Technical Excellence**: Leverages cutting-edge MEE technology over legacy ERC-4337
 3. **User-Centric Design**: Natural language interface removes technical barriers
 4. **Cross-Chain Leadership**: True multi-chain operations with single signature
+
+
+
