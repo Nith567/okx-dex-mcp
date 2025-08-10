@@ -141,8 +141,6 @@ export async function executeTokenSwap(params: SwapParams): Promise<{
   meeScanLink?: string;
   receipt?: any;
   error?: string;
-  outputAmount?: string;
-  minReceiveAmount?: string;
 }> {
   try {
     const { network, amount, fromTokenSymbol, toTokenSymbol } = params;
@@ -300,9 +298,7 @@ export async function executeTokenSwap(params: SwapParams): Promise<{
       success: true,
       hash,
       meeScanLink,
-      receipt: serializableReceipt,
-      outputAmount: swapData.toTokenAmount, // Actual output amount from swap
-      minReceiveAmount: swapData.minReceiveAmount // Minimum guaranteed output
+      receipt: serializableReceipt
     };
 
   } catch (error) {
