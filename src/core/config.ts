@@ -18,7 +18,11 @@ const envSchema = z.object({
 const env = envSchema.safeParse(process.env);
 
 // Default OKX credentials embedded in the package
-const DEFAULT_OKX_CONFIG = {g
+const DEFAULT_OKX_CONFIG = {
+  apiKey: process.env.OKX_API_KEY || "", 
+  secretKey: process.env.OKX_SECRET_KEY || "",
+  passphrase: process.env.OKX_PASSPHRASE || ""
+};
 
 // Format private key with 0x prefix if it exists
 const formatPrivateKey = (key?: string): string | undefined => {
