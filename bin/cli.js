@@ -23,7 +23,8 @@ if (missingVars.length > 0) {
   process.exit(1);
 }
 
-console.log(`Starting OKX MCP Server in ${httpMode ? 'HTTP' : 'stdio'} mode...`);
+// Remove console.log that interferes with MCP JSON protocol
+// console.log(`Starting OKX MCP Server in ${httpMode ? 'HTTP' : 'stdio'} mode...`);
 
 // Determine which file to execute
 const scriptPath = resolve(__dirname, '../build', httpMode ? 'http-server.js' : 'index.js');

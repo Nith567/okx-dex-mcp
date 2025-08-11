@@ -56,7 +56,6 @@ export async function swapAndDepositMorpho(params: {
     const executionConstraints = [greaterThanOrEqualTo(minAmountAfterSlippage)];
 
     const approveAmount = parseUnits(depositAmount, 18);
-    console.log("[MORPHO] approveAmount (wei):", approveAmount.toString());
     const approveMorphoVaultToSpendWeth = await orchestrator.buildComposable({
         type: "approve",
         data: {
@@ -108,7 +107,6 @@ export async function swapAndDepositMorpho(params: {
         }
     };
 
-    console.log("[MORPHO] fusionQuote request:", JSON.stringify(fusionQuoteReq, (k, v) => typeof v === 'bigint' ? v.toString() : v, 2));
 
     const fusionQuote = await meeClient.getFusionQuote(fusionQuoteReq);
 
