@@ -2,7 +2,7 @@
   "name": "@okx-mcp/server",
   "module": "src/index.ts",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Model Context Protocol (MCP) server for gasless DEX swapping powered by OKX DEX API + Biconomy MEE",
   "bin": {
     "okx-mcp": "./bin/cli.js"
