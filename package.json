@@ -1,5 +1,5 @@
 {
-  "name": "@okx-mcp/server",
+  "name": "okx-mcp-server",
   "module": "src/index.ts",
   "type": "module",
   "version": "1.0.2",
