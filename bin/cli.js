@@ -13,7 +13,17 @@ const require = createRequire(import.meta.url);
 const args = process.argv.slice(2);
 const httpMode = args.includes('--http') || args.includes('-h');
 
-console.log(`Starting EVM MCP Server in ${httpMode ? 'HTTP' : 'stdio'} mode...`);
+// Users need to provide both PRIVATE_KEY and OKX credentials
+const requiredEnvVars = ['PRIVATE_KEY', 'OKX_API_KEY', 'OKX_SECRET_KEY', 'OKX_PASSPHRASE'];
+const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+
+if (missingVars.length > 0) {
+  console.error(`❌ Missing required environment variables: ${missingVars.join(', ')}`);
+  console.error('Please set these in your MCP configuration.');
+  process.exit(1);
+}
+
+console.log(`Starting OKX MCP Server in ${httpMode ? 'HTTP' : 'stdio'} mode...`);
 
 // Determine which file to execute
 const scriptPath = resolve(__dirname, '../build', httpMode ? 'http-server.js' : 'index.js');

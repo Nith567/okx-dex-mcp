@@ -1,16 +1,17 @@
 import * as https from 'https';
 import * as crypto from 'crypto';
 import * as querystring from 'querystring';
+import { config } from '../core/config.js';
 
 const api_config = {
-  api_key: process.env.OKX_API_KEY || '',
-  secret_key: process.env.OKX_SECRET_KEY || '',
-  passphrase: process.env.OKX_PASSPHRASE || '',
+  api_key: config.okx.apiKey,
+  secret_key: config.okx.secretKey,
+  passphrase: config.okx.passphrase,
 };
 
-// Validate that all required environment variables are set
+// Validate that all required OKX credentials are available
 if (!api_config.api_key || !api_config.secret_key || !api_config.passphrase) {
-  throw new Error('Missing required OKX API environment variables. Please set OKX_API_KEY, OKX_SECRET_KEY, and OKX_PASSPHRASE in your .env file.');
+  throw new Error('Missing required OKX API credentials. Please check your package configuration.');
 }
 
 function preHash(timestamp: string, method: string, request_path: string, params?: any): string {

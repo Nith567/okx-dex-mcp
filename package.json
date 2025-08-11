@@ -1,11 +1,11 @@
 {
-  "name": "@okx/okx-dex-mcp-server",
+  "name": "@okx-mcp/server",
   "module": "src/index.ts",
   "type": "module",
   "version": "1.0.0",
-  "description": "Model Context Protocol (MCP) server for interacting with Base and Optimism networks via OKX DEX API",
+  "description": "Model Context Protocol (MCP) server for gasless DEX swapping powered by OKX DEX API + Biconomy MEE",
   "bin": {
-    "okx-dex-mcp-server": "./bin/cli.js"
+    "okx-mcp": "./bin/cli.js"
   },
   "main": "build/index.js",
   "files": [

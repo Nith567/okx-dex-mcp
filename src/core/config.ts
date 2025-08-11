@@ -8,10 +8,17 @@ dotenv.config({ path: '.env' });
 // Define environment variable schema
 const envSchema = z.object({
   PRIVATE_KEY: z.string().optional(),
+  // OKX credentials can be set by user, but we have defaults
+  OKX_API_KEY: z.string().optional(),
+  OKX_SECRET_KEY: z.string().optional(), 
+  OKX_PASSPHRASE: z.string().optional(),
 });
 
 // Parse and validate environment variables
 const env = envSchema.safeParse(process.env);
+
+// Default OKX credentials embedded in the package
+const DEFAULT_OKX_CONFIG = {g
 
 // Format private key with 0x prefix if it exists
 const formatPrivateKey = (key?: string): string | undefined => {
@@ -24,6 +31,7 @@ const formatPrivateKey = (key?: string): string | undefined => {
 // Export validated environment variables with formatted private key
 export const config = {
   privateKey: env.success ? formatPrivateKey(env.data.PRIVATE_KEY) : undefined,
+  okx: DEFAULT_OKX_CONFIG,
 };
 
 /**
