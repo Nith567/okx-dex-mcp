@@ -15,11 +15,10 @@ async function testSwap() {
     
     const result = await executeTokenSwap({
       network: 'optimism',
-      amount: '0.09',  // Smaller amount for testing
-      fromTokenSymbol: 'USDC',
-      toTokenSymbol: 'WETH'  // Changed to WETH
+      amount: '0.1', 
+      fromTokenSymbol: 'USDT',
+      toTokenSymbol: 'USDC' 
     });
-
     if (result.success) {
       console.log('✅ Swap successful!');
       console.log('Transaction Hash:', result.hash);
@@ -37,5 +36,5 @@ async function testSwap() {
   }
 }
 
-// Run the test
+
 testSwap();
