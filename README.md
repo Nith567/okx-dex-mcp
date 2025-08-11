@@ -4,6 +4,27 @@
 
 > **📝 Note**: Swapping occurs only for OKX supported networks and tokens.
 
+## 📦 Package Available on NPM
+**Live Package**: [https://www.npmjs.com/package/okx-mcp-server](https://www.npmjs.com/package/okx-mcp-server)
+
+**Quick Setup for Claude Desktop:**
+```json
+{
+  "mcpServers": {
+    "okx-dex": {
+      "command": "npx",
+      "args": ["-y", "okx-mcp-server"],
+      "env": {
+        "PRIVATE_KEY": "0xxxx",
+        "OKX_API_KEY": "xxx",
+        "OKX_SECRET_KEY": "xxxA1",
+        "OKX_PASSPHRASE": "xxx"
+      }
+    }
+  }
+}
+```
+
 ---
 
 ## 🎯 What Problem Are We Solving?
